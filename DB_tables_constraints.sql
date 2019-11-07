@@ -15,7 +15,7 @@ CREATE TABLE User (
 				PRIMARY KEY (uid),
 				FOREIGN KEY(pid) REFERENCES Payments(pid),
                 		ON UPDATE CASCADE,
-				ON DELETE SET DEFAULT 'no user');
+				ON DELETE SET DEFAULT 'no user'); -- Maybe needs to be -1 or an int
 
  
 
@@ -30,7 +30,8 @@ CREATE TABLE Employees(
  			   PRIMARY KEY(eid),
 			   FOREIGN KEY(sid) REFERENCES Stores(sid), 
 			   FOREIGN KEY(uid) REFERENCES Users(uid),
-               ON DELETE CASCADE; 
+		CHECK (salary > 0),
+               ON DELETE SET DEFAULT (-1); -- need to make sure we put in a reference to the default in the table
 
 CREATE TABLE Regions(
     			 rid INT(11)Not NULL,
@@ -38,7 +39,7 @@ CREATE TABLE Regions(
 			 manager INT(11)Not NULL, 
 			 PRIMARY KEY(rid),
 			 FOREIGN KEY(manager) REFERENCES Employees(eid))
-             ON DELETE CASCADE; 
+             ON UPDATE CASCADE; 
 
 
 
@@ -49,21 +50,24 @@ CREATE TABLE Stores(
 			 manager INT(11)Not NULL,  
 			 PRIMARY KEY(sid),
 			 FOREIGN KEY(rid) REFERENCES Regions(rid),
-			 FOREIGN KEY(manager) REFERENCES Employees(eid))
-             ON DELETE CASCADE; 
+			 FOREIGN KEY(manager) REFERENCES Employees(eid),
+		ON DELETE SET DEFAULT (-1), -- may need to pick a different default??? Like the online store?				   
+             ON UPDATE CASCADE); 
 
 CREATE TABLE Authors (
   			 	auid INT(11)Not NULL,
   			 	fname varchar(45)Not NULL,
   			 	lname varchar(45)Not NULL,
-  			 	PRIMARY KEY (auid)); 
+  			 	PRIMARY KEY (auid),
+	ON UPDATE CASCADE);
 
 
 
 CREATE TABLE Genres ( 
   			 	gid INT(11)Not NULL,
   			 	gname varchar(45)Not NULL,
-  			 	PRIMARY KEY (gid)); 
+  			 	PRIMARY KEY (gid),
+	ON UPDATE CASCADE);
 
 
 
@@ -72,12 +76,13 @@ CREATE TABLE Publishers (
   				pname varchar(45)Not NULL,
 				cid INT(11)Not NULL,
 				PRIMARY KEY (pubid),
-				FOREIGN KEY(cid) REFERENCES Cities(cid))
-                ON DELETE CASCADE;
+				FOREIGN KEY(cid) REFERENCES Cities(cid),
+                ON UPDATE CASCADE);
 
 CREATE TABLE Books_genres (
   				isbn INT(13)Not NULL,
   				gid INT(11)Not NULL,
+				FOREIGN KEY (gid) REFERENCES Genres(gid),
   				PRIMARY KEY (gid,isbn));
 
 CREATE TABLE Orders(
@@ -89,8 +94,10 @@ CREATE TABLE Orders(
 			 sid INT(11)Not NULL,
 			 PRIMARY KEY(oid),
 			 FOREIGN KEY(aid) REFERENCES Addresses(aid),
-			 FOREIGN KEY(eid) REFERENCES Employees(eid))
-             ON DELETE CASCADE;
+			 FOREIGN KEY(eid) REFERENCES Employees(eid),
+		CHECK(shipped_date > order_date),
+		ON DELETE SET DEFAULT (-1), -- As usual, may need to change the default
+             ON UPDATE CASCADE);
 
 
 CREATE TABLE Orders_books(
@@ -101,7 +108,7 @@ CREATE TABLE Orders_books(
 			      PRIMARY KEY(oid, isbn),
 			      FOREIGN KEY(oid) REFERENCES Orders(oid),
 			      FOREIGN KEY(isbn) REFERENCES Books(isbn))
-                  ON DELETE CASCADE; 
+ 
 
 CREATE TABLE Users_orders(
 				uid VARCHAR(45)Not NULL,
@@ -109,7 +116,7 @@ CREATE TABLE Users_orders(
 				PRIMARY KEY(uid, oid),
 				FOREIGN KEY (uid) REFERENCES Users(uid),
 				FOREIGN KEY (oid) REFERENCES Orders(oid))
-                ON DELETE CASCADE;
+
 
 
 
@@ -134,8 +141,8 @@ CREATE TABLE Books (
   			 	quantity_avail INT Not NULL,
   			 	PRIMARY KEY (isbn),
   			 	FOREIGN KEY(pubid) REFERENCES Publishers(pubid),
-  			 	FOREIGN KEY(auid) REFERENCES Authors (auid))
-                ON DELETE CASCADE;
+  			 	FOREIGN KEY(auid) REFERENCES Authors (auid),
+                ON UPDATE CASCADE);
 
 
 
@@ -168,7 +175,8 @@ CREATE TABLE Cities (
   				cid INT(11)Not NULL,
   				cname varchar(50)Not NULL,
   				state varchar(25)Not NULL,
-  				PRIMARY KEY(cid));
+  				PRIMARY KEY(cid)
+	ON UPDATE CASCADE);
 
 
 CREATE TABLE Addresses (
@@ -177,7 +185,8 @@ CREATE TABLE Addresses (
  				cid INT(11)Not NULL,
   				zip varchar(15)Not NULL,
   				PRIMARY KEY (aid),
-				FOREIGN KEY(cid) REFERENCES Cities(cid));
+				FOREIGN KEY(cid) REFERENCES Cities(cid),
+	ON UPDATE CASCADE);
 
 CREATE TABLE User_addresses (
   				uid varchar(45)Not NULL,
