@@ -10,11 +10,12 @@ CREATE TABLE User (
   				lName varchar(45)Not NULL,
   				email varchar(50)Not NULL,
   				password varchar(25)Not NULL,
-  				phone int(10)Not NULL,
+  				phone varchar(10)Not NULL,
   				pid int(10)Not NULL,
 				PRIMARY KEY (uid),
-				FOREIGN KEY(pid) REFERENCES Payments(pid))
-                ON DELETE CASCADE;
+				FOREIGN KEY(pid) REFERENCES Payments(pid),
+                		ON UPDATE CASCADE,
+				ON DELETE SET DEFAULT 'no user');
 
  
 
@@ -28,7 +29,7 @@ CREATE TABLE Employees(
 			   job_title VARCHAR(40)Not NULL,  
  			   PRIMARY KEY(eid),
 			   FOREIGN KEY(sid) REFERENCES Stores(sid), 
-			   FOREIGN KEY(uid) REFERENCES Users(uid))
+			   FOREIGN KEY(uid) REFERENCES Users(uid),
                ON DELETE CASCADE; 
 
 CREATE TABLE Regions(
@@ -118,8 +119,8 @@ CREATE TABLE In_cart(
 			 	isbn INT(13)Not NULL,
 			 	PRIMARY KEY(uid, isbn),
 			 	FOREIGN KEY(uid) REFERENCES Users(uid),
-			 	FOREIGN KEY(isbn) REFERENCES Books(isbn))
-                ON DELETE CASCADE;
+			 	FOREIGN KEY(isbn) REFERENCES Books(isbn));
+              
 
 
 CREATE TABLE Books (
@@ -144,16 +145,14 @@ CREATE TABLE Favorites (
   				isbn INT(13)Not NULL,
   				PRIMARY KEY (uid,isbn),
 				FOREIGN KEY(uid) REFERENCES Users(uid),
-				FOREIGN KEY(isbn) REFERENCES Books(isbn))
-                ON DELETE CASCADE;
+				FOREIGN KEY(isbn) REFERENCES Books(isbn));
 
 CREATE TABLE Wishlists (
   				uid varchar(45)Not NULL,
   				isbn INT(13)Not NULL,
   				PRIMARY KEY (uid,isbn),
 				FOREIGN KEY(uid) REFERENCES Users(uid),
-				FOREIGN KEY(isbn) REFERENCES Books(isbn))
-                ON DELETE CASCADE;
+				FOREIGN KEY(isbn) REFERENCES Books(isbn));
 
 CREATE TABLE Ratings (
   				uid varchar(45)Not NULL,
@@ -162,16 +161,14 @@ CREATE TABLE Ratings (
 				review text,
   				PRIMARY KEY (uid,isbn),
 				FOREIGN KEY(uid) REFERENCES Users(uid),
-				FOREIGN KEY(isbn) REFERENCES Books(isbn))
-                ON DELETE CASCADE;
+				FOREIGN KEY(isbn) REFERENCES Books(isbn));
 
 
 CREATE TABLE Cities (
   				cid INT(11)Not NULL,
   				cname varchar(50)Not NULL,
   				state varchar(25)Not NULL,
-  				PRIMARY KEY(cid))
-                ON DELETE CASCADE;
+  				PRIMARY KEY(cid));
 
 
 CREATE TABLE Addresses (
@@ -180,16 +177,14 @@ CREATE TABLE Addresses (
  				cid INT(11)Not NULL,
   				zip varchar(15)Not NULL,
   				PRIMARY KEY (aid),
-				FOREIGN KEY(cid) REFERENCES Cities(cid))
-                ON DELETE CASCADE;
+				FOREIGN KEY(cid) REFERENCES Cities(cid));
 
 CREATE TABLE User_addresses (
   				uid varchar(45)Not NULL,
   				aid INT(11)Not NULL, 
  				PRIMARY KEY (uid,aid),
   				FOREIGN KEY(uid) REFERENCES Users(uid), 
-  				FOREIGN KEY(aid) REFERENCES Addresses(aid))
-                ON DELETE CASCADE;
+  				FOREIGN KEY(aid) REFERENCES Addresses(aid));
 
 
  
