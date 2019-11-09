@@ -94,8 +94,8 @@ CREATE TABLE Orders(
 			 PRIMARY KEY(oid),
 			 FOREIGN KEY(aid) REFERENCES Addresses(aid),
 			 FOREIGN KEY(eid) REFERENCES Employees(eid) ON UPDATE CASCADE,
-			 CONSTRAINT correctDate
-			 CHECK (shipped_date > order_date);
+			 CONSTRAINT shippedDateAfterOrderDate
+			 CHECK (shipped_date > order_date));
 
 
 
@@ -114,7 +114,7 @@ CREATE TABLE Users_orders(
 				oid INT(11)Not NULL,
 				PRIMARY KEY(uid, oid),
 				FOREIGN KEY (uid) REFERENCES Users(uid) ON UPDATE CASCADE,
-				FOREIGN KEY (oid) REFERENCES Orders(oid) ON UPDATE CASCADE)
+				FOREIGN KEY (oid) REFERENCES Orders(oid) ON UPDATE CASCADE);
 
 
 
@@ -122,7 +122,7 @@ CREATE TABLE Users_orders(
 
 CREATE TABLE In_cart(
                 		uid VARCHAR(45)Not NULL,
-			 	isbn INT(13)Not NULL,
+			 	isbn INT(13) Not NULL,
 			 	PRIMARY KEY(uid, isbn),
 			 	FOREIGN KEY(uid) REFERENCES Users(uid) ON UPDATE CASCADE,
 			 	FOREIGN KEY(isbn) REFERENCES Books(isbn) ON UPDATE CASCADE);
