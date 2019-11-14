@@ -1,0 +1,323 @@
+body {
+	font-family: 'Titillium Web', sans-serif;
+}
+
+.topnav{
+	list-style-type: none;
+    margin: 0 auto;
+    padding: 0;
+    overflow: hidden;
+    background-color: #666;
+    text-align:center;
+    align-items: center;
+}
+
+.topnav ul{
+	list-style-type: none;
+	margin: 0 auto;
+	display:inline-block;
+	-webkit-padding-start: 0;
+}
+
+.topnav li {
+    float: left;
+}
+
+.topnav li a{
+	font-size:18px;
+	font-weight: 300;
+}
+
+.topnav li a, .dropbtn {
+    display: inline-block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    width:100px;
+}
+
+.topnav li a:hover, .dropdown:hover .dropbtn {
+    background-color: #111;
+}
+
+li.dropdown {
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.topnav .dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+}
+
+.topnav .dropdown-content a:hover {background-color: #f1f1f1;}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.top{
+	display: flex;
+	align-content: space-between;
+	align-items: center;
+}
+
+.top a{
+	margin: 0 5px;
+}
+
+.top h1, .top a{
+	flex: 0 1 auto;
+}
+
+.top form{
+	flex: 1 1 auto;
+	margin-left: 30px;
+	
+}
+
+.top h1{
+	margin: 20px;
+	font-weight: 300;
+	color: black;
+}
+
+.top h4{
+	color: black
+}
+
+.top a:link{
+	text-decoration: none;
+}
+
+.main{
+	display: block;
+	padding: 10px 30px;
+}
+
+.products {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.product-card {
+  padding: 2%;
+  flex-basis: 16%;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.product-image img {
+  max-width: 100%;
+}
+
+
+.product-info {
+  margin-top: auto;
+}
+
+.product-info h4, .product-info h5{
+/* 	text-align: center; */
+}
+
+.product-info h4{
+	margin-bottom: 10px;
+}
+.product-info h5{
+	margin-top: 0;
+	font-weight: 4;
+}
+
+.main h2{
+	margin: 30px 0;
+}
+
+.error{
+	color: #0000cc;
+}
+
+.button{
+	background-color: #4CAF50;
+	border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+.adminpic {
+	max-width: 100px;
+	max-height: 100px;
+}
+
+.admin table, .admin th, .admin td{
+	border: 1px solid black;
+	border-collapse: collapse;
+}
+
+.admin td{
+	padding: 10px;
+}	
+
+.formdiv input[type=text], .formdiv textarea , .formdiv input[type=number], .formdiv input[type=url], .formdiv select {
+    width: 100%;
+    padding: 8px 16px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.formdiv  select {
+	height: 30px;
+}
+
+.formdiv input[type=submit] {
+    width: 100%;
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size:18px;
+}
+
+.formdiv input[type=submit]:hover {
+    background-color: #45a049;
+}
+
+.formdiv {
+    border-radius: 5px;
+    background-color: #f2f2f2;
+    padding: 20px;
+}
+
+.delete{
+	color: 	#e60000;
+}
+
+.success{
+	color: green;
+}
+
+.prod_container{
+	display:flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+}
+
+.prod_details{
+	flex-basis: 60%;
+}
+
+.prod_aside{
+	flex-basis:37%;
+}
+
+.prod_details img{
+	max-width: 100%;
+	max-height: 450px;
+	margin-top: 30px;
+	margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+
+.inline{
+	display: inline-block;
+	margin: 0 10px 0 0;
+    color: #1E90FF;
+}
+
+.add {
+    background-color: #3366ff;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 10px;
+}
+
+.prod_aside h2{
+	margin-bottom: 10px;
+}
+
+.no_top{
+	margin-top: 0;
+}
+
+.reviews{
+	flex-basis: 100%;
+}
+
+.rvtable, .rvtable th, .rvtable td{
+	border: 1px solid black;
+	border-collapse: collapse;
+	padding: 10px;
+}
+
+.rvtable{
+	width: 100%;
+	margin-bottom: 20px;
+}
+
+.sm{
+	width: 90px;	
+}
+
+#mySearch{
+	font-size: 14px;
+	color: black;
+	width: 50%;
+	display: inline-block;
+	padding: 5px 10px;
+	border: 1px solid #a0b3b0;
+}
+.qty{
+	width:30px;
+	margin-right: 20px;
+}
+
+.top button {
+	font-size: 14px;
+}
+
+h2, h3, h4{
+	font-weight: 1000;
+}
+
+.topnav, .topnav a, .topnav li {
+	box-sizing: initial;
+}
+
+.histable{
+	margin-top: 20px;
+}
+
+.rvalign {
+	display: inline-block;
+}
+
+.top form a:link{
+	text-decoration: underline;
+}
