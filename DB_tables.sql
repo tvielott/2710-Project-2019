@@ -49,8 +49,7 @@ CREATE TABLE Stores(
 
 CREATE TABLE Authors (
   			 	auid INT(11),
-  			 	fname varchar(45),
-  			 	lname varchar(45),
+  			 	name varchar(45),
   			 	PRIMARY KEY (auid)); 
 
 
