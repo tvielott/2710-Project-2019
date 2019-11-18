@@ -74,13 +74,15 @@ CREATE TABLE Books_genres (
 CREATE TABLE Orders(
                 	 oid INT(11),
 			 aid INT(11),   
-			 eid INT(11),   
+			 eid INT(11),  
+			 uid VARCHAR(45),
 			 order_date DATE,
 			 shipped_date DATE,     
 			 sid INT(11),
 			 PRIMARY KEY(oid),
 			 FOREIGN KEY(aid) REFERENCES Addresses(aid),
-			 FOREIGN KEY(eid) REFERENCES Employees(eid));
+			 FOREIGN KEY(eid) REFERENCES Employees(eid)),
+			 FOREIGN KEY (uid) REFERENCES Users(uid);
 
 
 CREATE TABLE Orders_books(
@@ -91,13 +93,6 @@ CREATE TABLE Orders_books(
 			      PRIMARY KEY(oid, isbn),
 			      FOREIGN KEY(oid) REFERENCES Orders(oid),
 			      FOREIGN KEY(isbn) REFERENCES Books(isbn)); 
-
-CREATE TABLE Users_orders(
-				uid VARCHAR(45),
-				oid INT(11),
-				PRIMARY KEY(uid, oid),
-				FOREIGN KEY (uid) REFERENCES Users(uid),
-				FOREIGN KEY (oid) REFERENCES Orders(oid));
 
 
 
