@@ -118,7 +118,6 @@ CREATE TABLE Books (
   			 	image blob,
   			 	pub_date date,
   			 	pubid INT(11),
-  			 	auid INT(11),
   			 	price double(10,4),
   			 	quantity_avail INT,
   			 	PRIMARY KEY (isbn),
@@ -173,6 +172,12 @@ CREATE TABLE User_addresses (
  				PRIMARY KEY (uid,aid),
   				FOREIGN KEY(uid) REFERENCES Users(uid), 
   				FOREIGN KEY(aid) REFERENCES Addresses(aid));
-
+								   
+CREATE TABLE Books_authors (
+  				isbn INT(13),
+				auid INT(11),
+ 				PRIMARY KEY (isbn,auid),
+  				FOREIGN KEY(isbn) REFERENCES Books(isbn), 
+  				FOREIGN KEY(auid) REFERENCES Authors (auid));
 
  
