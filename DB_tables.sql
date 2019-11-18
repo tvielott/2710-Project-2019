@@ -21,8 +21,6 @@ CREATE TABLE Employees(
     			   eid INT(11),
 			   uid VARCHAR(45),	  
 			   sid INT(11),
-			   fname VARCHAR(45),
-			   lname VARCHAR(45),
 			   salary INT(11),   
 			   job_title VARCHAR(40),  
  			   PRIMARY KEY(eid),
