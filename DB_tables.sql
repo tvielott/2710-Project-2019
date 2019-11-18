@@ -114,8 +114,7 @@ CREATE TABLE Books (
   			 	price double(10,4),
   			 	quantity_avail INT,
   			 	PRIMARY KEY (isbn),
-  			 	FOREIGN KEY(pubid) REFERENCES Publishers(pubid),
-  			 	FOREIGN KEY(auid) REFERENCES Authors (auid));
+  			 	FOREIGN KEY(pubid) REFERENCES Publishers(pubid));
 
 
 
