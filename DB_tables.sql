@@ -81,8 +81,8 @@ CREATE TABLE Orders(
 			 sid INT(11),
 			 PRIMARY KEY(oid),
 			 FOREIGN KEY(aid) REFERENCES Addresses(aid),
-			 FOREIGN KEY(eid) REFERENCES Employees(eid)),
-			 FOREIGN KEY (uid) REFERENCES Users(uid);
+			 FOREIGN KEY(eid) REFERENCES Employees(eid),
+			 FOREIGN KEY (uid) REFERENCES Users(uid));
 
 
 CREATE TABLE Orders_books(
