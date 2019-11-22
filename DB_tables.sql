@@ -99,7 +99,7 @@ CREATE TABLE Orders_books(
 
 CREATE TABLE In_cart(
     				uid VARCHAR(45),
-			 	isbn INT(13),
+			 	isbn VARCHAR(13),
 			 	PRIMARY KEY(uid, isbn),
 			 	FOREIGN KEY(uid) REFERENCES Users(uid),
 			 	FOREIGN KEY(isbn) REFERENCES Books(isbn));
