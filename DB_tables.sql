@@ -67,7 +67,7 @@ CREATE TABLE Publishers (
 				FOREIGN KEY(cid) REFERENCES Cities(cid));
 
 CREATE TABLE Books_genres (
-  				isbn INT(13),
+  				isbn VARCHAR(13),
   				gid INT(11),
   				PRIMARY KEY (gid,isbn));
 
@@ -87,7 +87,7 @@ CREATE TABLE Orders(
 
 CREATE TABLE Orders_books(
    			      oid INT(11),
-			      isbn INT(13),
+			      isbn VARCHAR(13),
 			      units INT(11),
 			      price_at_sale INT,
 			      PRIMARY KEY(oid, isbn),
@@ -106,7 +106,7 @@ CREATE TABLE In_cart(
 
 
 CREATE TABLE Books (
-  			 	isbn INT(13),
+  			 	isbn VARCHAR(13),
  			 	title varchar(45),
   			 	image blob,
   			 	pub_date date,
@@ -121,21 +121,21 @@ CREATE TABLE Books (
 
 CREATE TABLE Favorites (
   				uid varchar(45),
-  				isbn INT(13),
+  				isbn VARCHAR(13),
   				PRIMARY KEY (uid,isbn),
 				FOREIGN KEY(uid) REFERENCES Users(uid),
 				FOREIGN KEY(isbn) REFERENCES Books(isbn));
 
 CREATE TABLE Wishlists (
   				uid varchar(45),
-  				isbn INT(13),
+  				isbn VARCHAR(13),
   				PRIMARY KEY (uid,isbn),
 				FOREIGN KEY(uid) REFERENCES Users(uid),
 				FOREIGN KEY(isbn) REFERENCES Books(isbn));
 
 CREATE TABLE Ratings (
   				uid varchar(45),
-  				isbn INT(13),
+  				isbn VARCHAR(13),
 				rating int,
 				review text,
   				PRIMARY KEY (uid,isbn),
@@ -166,7 +166,7 @@ CREATE TABLE User_addresses (
   				FOREIGN KEY(aid) REFERENCES Addresses(aid));
 								   
 CREATE TABLE Books_authors (
-  				isbn INT(13),
+  				isbn VARCHAR(13),
 				auid INT(11),
  				PRIMARY KEY (isbn,auid),
   				FOREIGN KEY(isbn) REFERENCES Books(isbn), 
