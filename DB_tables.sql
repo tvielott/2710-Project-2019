@@ -108,7 +108,7 @@ CREATE TABLE In_cart(
 CREATE TABLE Books (
   			 	isbn VARCHAR(13),
  			 	title varchar(45),
-  			 	image blob,
+  			 	image varchar(250),
   			 	pub_date date,
   			 	pubid varchar(11),
   			 	price double(10,2),
