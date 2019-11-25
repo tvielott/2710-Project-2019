@@ -110,7 +110,7 @@ CREATE TABLE Books (
  			 	title varchar(45),
   			 	image blob,
   			 	pub_date date,
-  			 	pubid INT(11),
+  			 	pubid varchar(11),
   			 	price double(10,2),
   			 	quantity_avail INT,
   			 	PRIMARY KEY (isbn),
