@@ -100,7 +100,7 @@ CREATE TABLE Books(
     isbn VARCHAR(13),
     title VARCHAR(45),
     image VARCHAR(250),
-    pub_date DATE,
+    pub_date YEAR(4),
     pubid VARCHAR(11),
     price DOUBLE(10, 2),
     quantity_avail INT,
