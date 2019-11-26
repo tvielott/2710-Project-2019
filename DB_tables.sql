@@ -51,16 +51,13 @@ CREATE TABLE Stores(
 
 CREATE TABLE Employees(
     eid VARCHAR(11),
-    fName VARCHAR(45),
-    lName VARCHAR(45),
-    email VARCHAR(50),
-    PASSWORD VARCHAR(25),
-    phone INT(10),
+    uid VARCHAR(11),
     sid VARCHAR(11),
     salary INT(11),
     job_title VARCHAR(40),
     PRIMARY KEY(eid),
-    FOREIGN KEY(sid) REFERENCES Stores(sid)
+    FOREIGN KEY(sid) REFERENCES Stores(sid),
+    FOREIGN KEY(uid) REFERENCES Users(uid)
 ); 
 
 CREATE TABLE Store_manager(
