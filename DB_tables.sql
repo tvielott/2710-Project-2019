@@ -109,7 +109,7 @@ CREATE TABLE Books(
 ); 
 
 CREATE TABLE Books_genres(
-    isbn VARCHAR(13),
+    isbn VARCHAR(30),
     gid VARCHAR(11),
     PRIMARY KEY(gid, isbn),
     FOREIGN KEY(isbn) REFERENCES Books(isbn),
@@ -117,7 +117,7 @@ CREATE TABLE Books_genres(
 ); 
 
 CREATE TABLE Books_authors(
-    isbn VARCHAR(13),
+    isbn VARCHAR(30),
     auid VARCHAR(11),
     PRIMARY KEY(isbn, auid),
     FOREIGN KEY(isbn) REFERENCES Books(isbn),
@@ -126,7 +126,7 @@ CREATE TABLE Books_authors(
 
 CREATE TABLE Ratings(
     uid VARCHAR(45),
-    isbn VARCHAR(13),
+    isbn VARCHAR(30),
     rating INT,
     review TEXT,
     PRIMARY KEY(uid, isbn),
@@ -136,7 +136,7 @@ CREATE TABLE Ratings(
 
 CREATE TABLE Favorites(
     uid VARCHAR(45),
-    isbn VARCHAR(13),
+    isbn VARCHAR(30),
     PRIMARY KEY(uid, isbn),
     FOREIGN KEY(uid) REFERENCES Users(uid),
     FOREIGN KEY(isbn) REFERENCES Books(isbn)
@@ -144,7 +144,7 @@ CREATE TABLE Favorites(
 
 CREATE TABLE Wishlists(
     uid VARCHAR(45),
-    isbn VARCHAR(13),
+    isbn VARCHAR(30),
     PRIMARY KEY(uid, isbn),
     FOREIGN KEY(uid) REFERENCES Users(uid),
     FOREIGN KEY(isbn) REFERENCES Books(isbn)
@@ -152,7 +152,7 @@ CREATE TABLE Wishlists(
 
 CREATE TABLE In_cart(
     uid VARCHAR(45),
-    isbn VARCHAR(13),
+    isbn VARCHAR(30),
     PRIMARY KEY(uid, isbn),
     FOREIGN KEY(uid) REFERENCES Users(uid),
     FOREIGN KEY(isbn) REFERENCES Books(isbn)
@@ -175,7 +175,7 @@ CREATE TABLE Orders(
 
 CREATE TABLE Orders_books(
     oid VARCHAR(11),
-    isbn VARCHAR(13),
+    isbn VARCHAR(30),
     units INT(11),
     price_at_sale INT,
     PRIMARY KEY(oid, isbn),
