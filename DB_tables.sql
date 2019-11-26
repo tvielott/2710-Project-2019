@@ -8,7 +8,7 @@ CREATE TABLE Cities(
 CREATE TABLE Payments(
     pid VARCHAR(11),
     ptype VARCHAR(40),
-    check_num INT,
+    check_num INT(30),
     PRIMARY KEY(pid)
 ); 
 
