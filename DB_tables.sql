@@ -92,7 +92,7 @@ CREATE TABLE Genres(
 
 CREATE TABLE Authors(
     auid VARCHAR(11),
-    NAME VARCHAR(45),
+    name VARCHAR(45),
     PRIMARY KEY(auid)
 ); 
 
