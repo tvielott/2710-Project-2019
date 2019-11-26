@@ -97,7 +97,7 @@ CREATE TABLE Authors(
 ); 
 
 CREATE TABLE Books(
-    isbn VARCHAR(13),
+    isbn VARCHAR(30),
     title VARCHAR(45),
     image VARCHAR(250),
     pub_date YEAR(4),
