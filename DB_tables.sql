@@ -22,6 +22,8 @@ CREATE TABLE Users(
     pid VARCHAR(10),
     PRIMARY KEY(uid),
     FOREIGN KEY(pid) REFERENCES Payments(pid)
+        ON UPDATE CASCADE
+        ON DELETE CASCADE
 ); 
 
 CREATE TABLE Addresses(
@@ -31,8 +33,12 @@ CREATE TABLE Addresses(
     cid VARCHAR(11),
     zip VARCHAR(15),
     PRIMARY KEY(aid),
-    FOREIGN KEY(uid) REFERENCES Users(uid),
+    FOREIGN KEY(uid) REFERENCES Users(uid)
+        ON UPDATE CASCADE
+        ON DELETE CASCADE,
     FOREIGN KEY(cid) REFERENCES Cities(cid)
+        ON UPDATE CASCADE
+        ON DELETE CASCADE
 ); 
 
 CREATE TABLE Regions(
@@ -47,6 +53,8 @@ CREATE TABLE Stores(
     sname VARCHAR(45),
     PRIMARY KEY(sid),
     FOREIGN KEY(rid) REFERENCES Regions(rid)
+        ON UPDATE CASCADE
+        ON DELETE CASCADE
 ); 
 
 CREATE TABLE Employees(
@@ -56,24 +64,36 @@ CREATE TABLE Employees(
     salary VARCHAR(11),
     job_title VARCHAR(40),
     PRIMARY KEY(eid),
-    FOREIGN KEY(sid) REFERENCES Stores(sid),
+    FOREIGN KEY(sid) REFERENCES Stores(sid)
+        ON UPDATE CASCADE
+        ON DELETE CASCADE,
     FOREIGN KEY(uid) REFERENCES Users(uid)
+        ON UPDATE CASCADE
+        ON DELETE CASCADE
 ); 
 
 CREATE TABLE Store_manager(
     sid VARCHAR(11),
     eid VARCHAR(11),
     PRIMARY KEY(sid, eid),
-    FOREIGN KEY(eid) REFERENCES Employees(eid),
+    FOREIGN KEY(eid) REFERENCES Employees(eid)
+        ON UPDATE CASCADE
+        ON DELETE CASCADE,
     FOREIGN KEY(sid) REFERENCES Stores(sid)
+        ON UPDATE CASCADE
+        ON DELETE CASCADE
 ); 
 
 CREATE TABLE Region_manager(
     rid VARCHAR(11),
     eid VARCHAR(11),
     PRIMARY KEY(rid, eid),
-    FOREIGN KEY(eid) REFERENCES Employees(eid),
+    FOREIGN KEY(eid) REFERENCES Employees(eid)
+        ON UPDATE CASCADE
+        ON DELETE CASCADE,
     FOREIGN KEY(rid) REFERENCES Regions(rid)
+        ON UPDATE CASCADE
+        ON DELETE CASCADE
 ); 
 
 CREATE TABLE Publishers(
@@ -82,6 +102,8 @@ CREATE TABLE Publishers(
     cid VARCHAR(11),
     PRIMARY KEY(pubid),
     FOREIGN KEY(cid) REFERENCES Cities(cid)
+        ON UPDATE CASCADE
+        ON DELETE CASCADE
 ); 
 
 CREATE TABLE Genres(
@@ -100,28 +122,38 @@ CREATE TABLE Books(
     isbn VARCHAR(30),
     title VARCHAR(500),
     image VARCHAR(250),
-    pub_date YEAR(4),
+    pub_date VARCHAR(4),
     pubid VARCHAR(11),
     price DOUBLE(10, 2),
     quantity_avail INT,
     PRIMARY KEY(isbn),
     FOREIGN KEY(pubid) REFERENCES Publishers(pubid)
+        ON UPDATE CASCADE
+        ON DELETE CASCADE
 ); 
 
 CREATE TABLE Books_genres(
     isbn VARCHAR(30),
     gid VARCHAR(11),
     PRIMARY KEY(gid, isbn),
-    FOREIGN KEY(isbn) REFERENCES Books(isbn),
+    FOREIGN KEY(isbn) REFERENCES Books(isbn)
+        ON UPDATE CASCADE
+        ON DELETE CASCADE,
     FOREIGN KEY(gid) REFERENCES Genres(gid)
+        ON UPDATE CASCADE
+        ON DELETE CASCADE
 ); 
 
 CREATE TABLE Books_authors(
     isbn VARCHAR(30),
     auid VARCHAR(11),
     PRIMARY KEY(isbn, auid),
-    FOREIGN KEY(isbn) REFERENCES Books(isbn),
+    FOREIGN KEY(isbn) REFERENCES Books(isbn)
+        ON UPDATE CASCADE
+        ON DELETE CASCADE,
     FOREIGN KEY(auid) REFERENCES Authors(auid)
+        ON UPDATE CASCADE
+        ON DELETE CASCADE
 ); 
 
 CREATE TABLE Ratings(
@@ -130,32 +162,48 @@ CREATE TABLE Ratings(
     rating INT,
     review TEXT,
     PRIMARY KEY(uid, isbn),
-    FOREIGN KEY(uid) REFERENCES Users(uid),
+    FOREIGN KEY(uid) REFERENCES Users(uid)
+        ON UPDATE CASCADE
+        ON DELETE CASCADE,
     FOREIGN KEY(isbn) REFERENCES Books(isbn)
+        ON UPDATE CASCADE
+        ON DELETE CASCADE
 ); 
 
 CREATE TABLE Favorites(
     uid VARCHAR(45),
     isbn VARCHAR(30),
     PRIMARY KEY(uid, isbn),
-    FOREIGN KEY(uid) REFERENCES Users(uid),
+    FOREIGN KEY(uid) REFERENCES Users(uid)
+        ON UPDATE CASCADE
+        ON DELETE CASCADE,
     FOREIGN KEY(isbn) REFERENCES Books(isbn)
+        ON UPDATE CASCADE
+        ON DELETE CASCADE
 ); 
 
 CREATE TABLE Wishlists(
     uid VARCHAR(45),
     isbn VARCHAR(30),
     PRIMARY KEY(uid, isbn),
-    FOREIGN KEY(uid) REFERENCES Users(uid),
+    FOREIGN KEY(uid) REFERENCES Users(uid)
+        ON UPDATE CASCADE
+        ON DELETE CASCADE,
     FOREIGN KEY(isbn) REFERENCES Books(isbn)
+        ON UPDATE CASCADE
+        ON DELETE CASCADE
 ); 
 
 CREATE TABLE In_cart(
     uid VARCHAR(45),
     isbn VARCHAR(30),
     PRIMARY KEY(uid, isbn),
-    FOREIGN KEY(uid) REFERENCES Users(uid),
+    FOREIGN KEY(uid) REFERENCES Users(uid)
+        ON UPDATE CASCADE
+        ON DELETE CASCADE,
     FOREIGN KEY(isbn) REFERENCES Books(isbn)
+        ON UPDATE CASCADE
+        ON DELETE CASCADE
 ); 
 
 CREATE TABLE Orders(
@@ -167,10 +215,18 @@ CREATE TABLE Orders(
     shipped_date DATE,
     sid VARCHAR(11),
     PRIMARY KEY(oid),
-    FOREIGN KEY(sid) REFERENCES Stores(sid),
-    FOREIGN KEY(aid) REFERENCES Addresses(aid),
-    FOREIGN KEY(eid) REFERENCES Employees(eid),
+    FOREIGN KEY(sid) REFERENCES Stores(sid)
+        ON UPDATE CASCADE
+        ON DELETE CASCADE,
+    FOREIGN KEY(aid) REFERENCES Addresses(aid)
+        ON UPDATE CASCADE
+        ON DELETE CASCADE,
+    FOREIGN KEY(eid) REFERENCES Employees(eid)
+        ON UPDATE CASCADE
+        ON DELETE CASCADE,
     FOREIGN KEY(uid) REFERENCES Users(uid)
+        ON UPDATE CASCADE
+        ON DELETE CASCADE
 ); 
 
 CREATE TABLE Orders_books(
@@ -179,6 +235,10 @@ CREATE TABLE Orders_books(
     units INT(11),
     price_at_sale INT,
     PRIMARY KEY(oid, isbn),
-    FOREIGN KEY(oid) REFERENCES Orders(oid),
+    FOREIGN KEY(oid) REFERENCES Orders(oid)
+        ON UPDATE CASCADE
+        ON DELETE CASCADE,
     FOREIGN KEY(isbn) REFERENCES Books(isbn)
+        ON UPDATE CASCADE
+        ON DELETE CASCADE
 );
