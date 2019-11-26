@@ -18,7 +18,7 @@ CREATE TABLE Users(
     lName VARCHAR(45),
     email VARCHAR(50),
     PASSWORD VARCHAR(25),
-    phone INT(10),
+    phone VARCHAR(12),
     pid VARCHAR(10),
     PRIMARY KEY(uid),
     FOREIGN KEY(pid) REFERENCES Payments(pid)
@@ -53,7 +53,7 @@ CREATE TABLE Employees(
     eid VARCHAR(11),
     uid VARCHAR(11),
     sid VARCHAR(11),
-    salary INT(11),
+    salary VARCHAR(11),
     job_title VARCHAR(40),
     PRIMARY KEY(eid),
     FOREIGN KEY(sid) REFERENCES Stores(sid),
