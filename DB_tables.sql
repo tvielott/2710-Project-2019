@@ -19,7 +19,7 @@ CREATE TABLE Users(
     email VARCHAR(50),
     PASSWORD VARCHAR(25),
     phone VARCHAR(12),
-    pid VARCHAR(10),
+    pid VARCHAR(11),
     PRIMARY KEY(uid),
     FOREIGN KEY(pid) REFERENCES Payments(pid)
         ON UPDATE CASCADE
