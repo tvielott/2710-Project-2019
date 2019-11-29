@@ -98,7 +98,7 @@ CREATE TABLE Region_manager(
 
 CREATE TABLE Publishers(
     pubid VARCHAR(11),
-    pname VARCHAR(45),
+    pname VARCHAR(45) UNIQUE,
     cid VARCHAR(11),
     PRIMARY KEY(pubid),
     FOREIGN KEY(cid) REFERENCES Cities(cid)
@@ -213,6 +213,7 @@ CREATE TABLE Orders(
     order_date DATE,
     shipped_date DATE,
     sid VARCHAR(11),
+    completed TINYINT(1),
     PRIMARY KEY(oid),
     FOREIGN KEY(sid) REFERENCES Stores(sid)
         ON UPDATE CASCADE
