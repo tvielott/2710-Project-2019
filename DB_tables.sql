@@ -193,10 +193,13 @@ CREATE TABLE Wishlists(
         ON DELETE CASCADE
 ); 
 
-CREATE TABLE In_cart(
+CREATE TABLE Cart(
+    id VARCHAR(11),
     uid VARCHAR(45),
     isbn VARCHAR(30),
-    PRIMARY KEY(uid, isbn),
+    quantity INT,
+    total_price INT,
+    PRIMARY KEY(id),
     FOREIGN KEY(uid) REFERENCES Users(uid)
         ON UPDATE CASCADE
         ON DELETE CASCADE,
